@@ -31,7 +31,7 @@ def build_cnn():
     model.add(tf.keras.layers.Conv2D(128, (3,3), strides=(2,2), activation='relu'))
     model.add(tf.keras.layers.Flatten())
     model.add(tf.keras.layers.Dense(128, activation='relu'))
-    model.add(tf.keras.layers.Dense(2, activation='softmax'))
+    model.add(tf.keras.layers.Dense(5, activation='softmax'))
 
     return model
 
@@ -42,11 +42,15 @@ model.compile(
     metrics=['accuracy']
 )
 
-history = model.fit_generator(train_it,
-                              epochs=10,
-                              steps_per_epoch=16,
-                              validation_data=test_it,
-                              validation_steps=8)
+# history = model.fit(train_it, 
+#                     epochs=10, 
+#                     steps_per_epoch=16, 
+#                     validation_data=test_it,
+#                     validation_steps=8)
+
+history = model.fit(train_it,
+                    epochs=10, 
+                    validation_data=test_it)
 
 model_path = filepath + '/models/cassavacnn'
 model.save(filepath=model_path)
