@@ -9,7 +9,7 @@ import os
 
 filepath = os.path.dirname(os.path.abspath(__file__))
 
-img_path = filepath + '/test-3.jpg'
+img_path = filepath + '/test-4.jpg'
 model_path = filepath + '/models/cassavacnn'
 
 img = image.load_img(img_path, target_size=(1024,1024))
